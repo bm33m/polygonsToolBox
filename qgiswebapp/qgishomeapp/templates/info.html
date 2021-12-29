@@ -1,0 +1,91 @@
+{% extends "webapp.html" %}
+{% block content %}
+  {% load static %}
+<h1>Qgis Info.</h1>
+<div>
+  {{ time }}
+  <b>{{ message }}</b>
+</div>
+<hr>
+<div>
+  <form class="frmreg" action="imagefilter" method="post">
+  {% csrf_token %}
+    <input class="cinpt" type="txt" id="imageLink" name="imageLink" placeholder="Enter your image link." value="{{ image.size }}" maxlength="250" required />
+    <input class="cinpt" type="txt" id="imageName" name="imageName" placeholder="image link." value="{{ imageName }}" maxlength="250" hidden />
+    <button type="submit" value="Help">Info</button>
+  </form>
+  <div class="dvinfo">
+    <p>{{ image }}</p>
+    <p>{{imageName}}</p>
+  </div>
+</div>
+<hr>
+<div class="dvproject">
+  <form class="frmreg" enctype="multipart/form-data" action="imagefilter" method="post">
+  {% csrf_token %}
+  <div class="dvreg">
+    <label>Name:</label><br>
+    <input class="cinpt" type="text" id="imageLink" name="imageLink" placeholder="name" value="{{ image.size }}" maxlength="250"  required />
+    <input class="cinpt" type="txt" id="imageName" name="imageName" placeholder="image link." value="{{ imageName }}" maxlength="250" hidden />
+  </div>
+  <div class="dvreg" id="divAdmin">
+    <p>File: <input type="file" name="filename"></p>
+    <p>jpg or png</p>
+    <p> 500 KB or less </p>
+  </div>
+  <p><input type="submit" value="Info"/></p>
+  </form>
+</div>
+<hr>
+<div id="dvusers">
+  <div class="dvtbl">
+    <table id="tblusers">
+    <tbody>
+      <tr class="header">
+        <th>Name</th>
+        <th>Map</th>
+      </tr>
+      {% for x in app %}
+      <tr>
+        <td>{{folder}}{% static x %}</td>
+        <td>
+          <a href="#lblinfo">
+            <div class="dvuiprofile">
+              <img src="{% static x %}" alt="{{ x }}">
+            </div>
+            <form class="frmreg" action="imagefilter" method="post">
+            {% csrf_token %}
+              <input class="cinpt" type="txt" id="imageName" name="imageName" placeholder="image name." value="{{ x }}" maxlength="250" hidden />
+              <input class="cinpt" type="txt" id="imageLink" name="imageLink" placeholder="Enter your image link." value="{{folder}}{% static x %}" maxlength="250" required />
+              <button type="submit" value="Help">Info</button>
+            </form>
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    </table>
+  </div>
+</div>
+<hr>
+<div class="dvinfo">
+  {{ info }}
+</div>
+<hr>
+<div class="divchat">
+  <video title="Remove spikes..." playsinline controls loop poster="{% static poster1 %}" preload="metadata">
+    <source src="{% static video1 %}" type="video/mp4"/>
+    <p>This browser does not support the video element.</p>
+  </video>
+</div>
+<hr>
+<div class="gdvuiprofile">
+  <img src="{% static imageName %}" alt="{{ imageName }}">
+</div>
+<div class="dvinfo">
+  <label id="lblinfo" name="lblinfo">
+    {{imageName}}
+  </label>
+  <p>{{ image }}</p>
+</div>
+{% endblock %}

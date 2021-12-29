@@ -1,49 +1,6 @@
-# polygonsToolBox
-Polygons Tool Box.
+#polygonsToolBox
 
-
-![ptoolml22](https://user-images.githubusercontent.com/93065628/147403430-ffc8878a-26ed-4a37-b65f-31939251ea6f.png)
-# polygonsToolBox
-Polygons Tool Box.
-
-Source code:
-'''
-git clone https://github.com/bm33m/polygonsToolBox.git
-'''
-
-This project is divided into 3 phases ( a.k.a. milestones).
-Each phase could take up to 7 days or more.
-
-Version 1 uses django to explore the content of the database package file gpkg and to perform spatial data analysis on spatial databases.
-
-'''
-cd qgiswebapp
-python manage.py runserver
-'''
-visit:  http://127.0.0.1:8000/
-Quit the server with CTRL-BREAK.
-
-Version 2 uses opencv, numpy, pandas, scipy, matplotlib and networkx to analyze the data structures.
-
-'''
-cd qgistoolbox01
-python spikestool.py [-- input  image.png]
-'''
-
-Version 3 uses qgis and pyqgis to implement the solution.
-You can use the qgis python console to open and run:
-
-'''
-qgistoolbox03/toolbox.py
-'''
-
-
-
-
-
-Enjoy... :-)
-
-So how does it work?
+Steps by steps to remove spikes from the polygons:
 
 Our mission is to remove spikes from the image.
 We are focusing on Polygons.
@@ -64,15 +21,26 @@ The first point and the last point are outliers or noise or not the same.
 
 On the other hand what if the tricky polygon that looks like a line is a spike?
 As far as the computer system is concerned it is still a polygon if the linestring is closed.
-
 So, what do we do?
 Maths, algebra can come to our rescue!
 We check the linestrings of each and every vector in the polygon i.e. vectorLayers.
 We focus on the distance between the two adjacent points, and the angle between them.
 If the distance is greater than the maxDistance and the angle is less than the minLineAngle we exclude the point.
 
+We are done :)
+
+This project is divided into 3 versions.
+
+Version 3 uses qgis and pyqgis to implement the solution.
+
+Version 2 uses opencv, numpy, pandas, scipy, matplotlib and networkx to analyze the data structures.
+
+Version 1 uses django to explore the content of the database package file gpkg and to perform spatial data analysis on spatial databases.
+
+Source code:
+'''
+git clone https://github.com/bm33m/polygonsToolBox.git
+'''
 
 
-
-
-We are done.
+Enjoy.

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block stlcss %}{% endblock %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
+		<title>{% block title %}RM WebApp Pro{% endblock %}</title>
+	</head>
+	<body>
+    <div class="navbar">
+      {% block navbar %}
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/qgisadmin">Qgis admin</a></li>
+        <li><a href="/qgisadmin/qgisdata?qgz=spiky-polygons.qgz">Qgis data</a></li>
+        <li><a href="/home/qgisinfo">Info</a></li>
+        <li><a href="/qgistool">xmlinfo</a></li>
+      </ul>
+      {% endblock %}
+    </div>
+    <div>{{ message }}</div>
+    <div>
+      {% block content %}{% endblock %}
+    </div>
+	</body>
+  <footer>
+    {{ pname }}
+    {{ ip }}
+    {{ year }}
+  </footer
+</html>

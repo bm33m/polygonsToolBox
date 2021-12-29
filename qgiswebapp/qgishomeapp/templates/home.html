@@ -1,0 +1,46 @@
+{% extends "webapp.html" %}
+{% block content %}
+  {% load static %}
+<h1>Qgis Home.</h1>
+<div>
+  {{ time }}
+  <b>{{ message }}</b>
+</div>
+<hr>
+<div>
+  <form class="frmreg" action="imagefilter" method="post">
+  {% csrf_token %}
+    <input class="cinpt" type="text" id="imageLink" name="imageLink" placeholder="Enter your imageLink." value="{{ app.map }}" maxlength="250" required />
+    <button type="submit">Info</button>
+  </form>
+</div>
+<hr>
+<div class="dvproject">
+  <form class="frmreg" enctype="multipart/form-data" action="imagefilter" method="post">
+  {% csrf_token %}
+  <div class="dvreg">
+    <label>Name:</label><br>
+    <input class="cinpt" type="text" id="imageLink" name="imageLink" placeholder="name" value="{{ app.name }}" maxlength="250"  required />
+  </div>
+  <div class="dvreg">
+    <label>About:</label><br>
+    <textarea id="message" name="message" placeholder="More Details." maxlength="900">{{ app.info }}</textarea>
+  </div>
+  <div class="dvreg" id="divAdmin">
+    <p>File: <input type="file" name="filename"></p>
+    <p>gpkg or jpg or png</p>
+    <p> 500 KB or less </p>
+  </div>
+  <p><input type="submit" value="Info"/></p>
+  </form>
+</div>
+<hr>
+<div class="gdvuiprofile">
+  <img src="{% static app.map %}" alt="{{ app.info }}">
+</div>
+{{ app.map }}
+<div class="dvinfo">
+  {{ app.info }}
+</div>
+<hr>
+{% endblock %}

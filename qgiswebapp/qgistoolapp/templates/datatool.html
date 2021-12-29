@@ -1,0 +1,20 @@
+{% extends "webapp.html" %}
+{% block content %}
+  {% load static %}
+<h1>Qgis Tool.</h1>
+<div>
+  {{ time }}
+  <b>{{ message }}</b>
+</div>
+<hr>
+<div class="dvinfo">
+  {{ df }}
+</div>
+<div class="dvinfo">
+  {{ info }}
+</div>
+<hr>
+<div class="gdvuiprofile">
+  <img src="{% static des %}" alt="{{ year }}">
+</div>
+{% endblock %}

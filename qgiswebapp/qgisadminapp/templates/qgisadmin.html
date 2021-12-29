@@ -1,0 +1,96 @@
+{% extends "webapp.html" %}
+{% block content %}
+  {% load static %}
+<script src="{% static '/qgisadminapp/js/app.js' %}"></script>
+<h1>{{admin}}</h1>
+<div>
+  {{ time }}
+  <b>{{ message }}</b>
+</div>
+<hr>
+<div class="dvusers">
+  <form class="frmreg" enctype="multipart/form-data" action="qgisdata" method="post">
+  {% csrf_token %}
+  <div class="dvreg">
+    <label>Table Name:</label><br>
+    <input class="cinpt" type="text" id="imageLink" name="imageLink" placeholder="name" value="{{ table }}" maxlength="250"  required />
+  </div>
+  <div class="dvreg">
+    <label>Gpkg:</label><br>
+    <input class="cinpt" type="text" id="dbname" name="dbname" placeholder="dbname" value="{{ gpkg }}" maxlength="250"  required />
+  </div>
+  <div class="dvreg">
+    <label>Message:</label><br>
+    <textarea id="message" name="message" placeholder="More Details." maxlength="900">{{qgisFile}}{{data}}</textarea>
+  </div>
+  <div class="dvreg" id="divAdmin">
+    <p>File: <input type="file" name="filename"></p>
+    <p>gpkg or jpg or png</p>
+    <p> 500 KB or less </p>
+  </div>
+  <p><input type="submit" value="Send"/></p>
+  </form>
+</div>
+<hr>
+<div id="dvusers">
+  <div class="dvtbl">
+    <table id="tblusers">
+    <tbody>
+      <tr class="header">
+        <th>Name</th>
+        <th>Gpkg info</th>
+      </tr>
+      {% for x in tables %}
+      <tr>
+        <td>{{ x }}</td>
+        <td>
+          <a href="#lblinfo">
+            <form class="frmreg" action="dbtables" method="post">
+            {% csrf_token %}
+              <input class="cinpt" type="txt" id="{{x}}" name="dbtable" placeholder="Enter your dbtable." value="{{x}}" maxlength="250" required />
+              <button class="btnSend" type="submit">Info</button>
+            </form>
+          </a>
+        </td>
+      </tr>
+      <script type="text/javascript">
+        //tableInfo('{{x}}');
+      </script>
+      {% endfor %}
+    </tbody>
+    </table>
+  </div>
+</div>
+<hr>
+<div>
+  {% if tables.has_next %}
+    <p>
+        <a href="?page={{tables.next_page_number}}">next</a>
+        <a href="?page={{tables.paginator.num_pages}}">last &raquo;</a>
+    </p>
+  {% endif %}
+</div>
+<div>
+  <p>{{ tables }}</p>
+</div>
+<div>
+  {% if tables.has_previous %}
+    <p>
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{tables.previous_page_number}}">previous</a>
+    </p>
+  {% endif %}
+</div>
+<hr>
+<label id="lblinfo" name="lblinfo">
+  {{ numberOfTables }}
+</label>
+<div class="dvinfo">{{data}}</div>
+<hr>
+<p>{{qgs}}</p>
+<div class="dvinfo">{{qgis}}</div>
+<hr>
+<div class="dvinfo">
+  <div>{{qgisFile}}</div>
+</div>
+{% endblock %}

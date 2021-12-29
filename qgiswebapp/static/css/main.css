@@ -1,0 +1,147 @@
+/*
+main.css
+Author: Brian
+*/
+
+header {
+  background-color: #8071;
+  border: 5px solid #777;
+  height: auto;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display:grid;
+}
+
+textarea {
+    width: 80%;
+    min-height: 100px;
+}
+
+.app {
+    width: 85%;
+    margin: inherit;
+}
+
+input:focus, textarea:focus {
+    color: goldenrod;
+}
+
+hr {
+    border: 1px solid blue;
+		border-top: solid 10px #e8e2e3;
+}
+
+.navbar ul li {
+  display: flex;
+}
+
+.navbar:hover, .btnSend:hover {
+  background-color: red;
+}
+
+.navbar {
+  background-color: #000;
+  height: auto;
+}
+
+.navbar ul li {
+  display: inline-block;
+  text-align: center;
+  padding: 0 10px;
+  text-decoration: none;
+  font-size: 1.8rem;
+}
+
+pre, .dvinfo {
+    border: dotted #ccc;
+    padding: 5px;
+    background-color: #cce;
+}
+
+.code {
+    padding: 4px;
+    background-color: #ffffd8;
+    display:grid;
+}
+
+body {
+    width: auto;
+    padding: 15px;
+    margin-bottom: 50px;
+    margin: 40px 10px;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+    background-color: #ffffd8;
+    /* background-color: #ffffef; */
+}
+
+.dvuiprofile {
+  background-color: rgba(25, 70, 51, 2);
+	border: 3px;
+	border-radius: 3.5em;
+	color: rgba(55, 25, 55, 0.95);
+  height: 170px;
+  width: 170px;
+  border-color: #123;
+  border-style: solid;
+}
+
+.dvuiprofile img {
+  height: 160px;
+  width: 160px;
+  border: solid 5px white;
+  border-radius: 100%;
+}
+
+.gdvuiprofile {
+  background-color: rgba(25, 70, 51, 2);
+	border: 3px;
+	border-radius: 3.5em;
+	color: rgba(55, 25, 55, 0.95);
+  height: 250px;
+  width: 450px;
+  border-color: #123;
+  border-style: solid;
+}
+
+.gdvuiprofile img {
+  height: 240px;
+  width: 400px;
+  border: solid 5px white;
+  border-radius: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+  border: 2px solid #abc;
+  font-size: 12px;
+  background-image: url(../data/data.jpg);
+}
+
+tr {
+  border-bottom: 1px solid #bcd;
+}
+
+.dvanswer {
+  border: dotted #ccc;
+  padding: 5px;
+  background-color: #cde;
+}
+
+tr:nth-child(odd) {
+  background-color: #bac;
+}
+
+tr:nth-child(even) {
+  color: #ffff00;
+}
+
+tr:hover {
+  background-color: #ff33cc;
+}
+
+footer {
+  background-color: #ffd309;
+}
